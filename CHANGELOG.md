@@ -2,6 +2,26 @@
 
 All notable changes to this package are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the package adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0-alpha.3] — 2026-06-09
+
+Scaffold UX fix. Closes the "press Play and nothing happens" gap that
+hit devs after `myvillage create-game` because no GameObject had a
+MockMissionHost attached.
+
+### Added
+- `Editor/StarterSceneCreator.cs` — menu item
+  **`MyVillage → Create Starter Mission Scene`**. Builds a fresh scene
+  with a "Mission" GameObject carrying MockMissionHost, auto-attaches
+  the dev's MissionBase subclass if exactly one is found in the
+  project, saves the scene, and adds it to Build Settings.
+
+This is the lever the CLI scaffold now points at — see CLI v1.59.0.
+
+### Notes
+- Pairs with `MyVillageOS-CLI` v1.59.0, which updates the scaffolded
+  `MyMission.cs` and README to tell the dev to click the new menu item
+  as step 1 after opening the project in Unity.
+
 ## [1.1.0-alpha.2] — 2026-06-09
 
 Part 1 of GameKit M3: in-editor preview. Lets devs play their mission
