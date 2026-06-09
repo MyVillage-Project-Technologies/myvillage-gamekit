@@ -2,6 +2,37 @@
 
 All notable changes to this package are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the package adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0-alpha.4] — 2026-06-09
+
+First playable templates and UI widgets.
+
+### Added
+- `QuizMission` is now a complete implementation. Configure a
+  `QuizMissionConfig` with questions, choices, and per-question timing
+  and the mission builds its own UI, runs the round, awards a score,
+  and reports the result — no prefab or extra C# required.
+- `MatchMission` is now a complete implementation. Configure a
+  `MatchMissionConfig` with a grid size and a set of card-face sprites
+  and the mission builds the grid, handles flip/match/mismatch, and
+  ends when all pairs are matched.
+- `MissionHUD` builds a programmatic Canvas with score, timer, title,
+  and a pause button wired to `IMissionHost`. Use `MissionHUD.Create(host)`
+  for the auto-built version, or attach to a custom Canvas and call
+  `Bind()` for a designer-driven version.
+- `ResultPanel` builds a programmatic end-of-mission summary panel.
+  Use `ResultPanel.Create(host)` then `Show(result, onContinue)`.
+
+### Implementation notes
+- Templates use the legacy `UnityEngine.UI.Text` + `Image` to avoid an
+  explicit TextMeshPro dependency. v1.1 will swap to TMP for typography.
+- UI is built at runtime from C# — devs don't need to create or edit
+  prefabs to ship a working mission. Looks plain; functions correctly.
+- All textures, fonts, and colors are sourced from Unity built-ins or
+  named constants — the SDK ships no binary assets.
+
+### Notes
+- No API breaks from alpha.3. Existing code compiles unchanged.
+
 ## [1.0.0-alpha.3] — 2026-06-09
 
 Retargets the SDK at Unity 6.3 LTS, replacing the 6.0 LTS baseline.
