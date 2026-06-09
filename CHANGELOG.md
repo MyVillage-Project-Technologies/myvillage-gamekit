@@ -2,6 +2,22 @@
 
 All notable changes to this package are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the package adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0-alpha.3] — 2026-06-09
+
+Retargets the SDK at Unity 6.3 LTS, replacing the 6.0 LTS baseline.
+
+### Changed
+- `unity` field: `"6000.0"` → `"6000.3"`. Minimum supported editor is now
+  the newer Unity 6.3 LTS line.
+- `unityRelease` field: `"76f1"` → `"12f1"`. Recommended editor version is
+  6000.3.12f1 — matches the M-UNI Universe host.
+
+### Notes
+- No Runtime/Editor API changes. Source-compatible with alpha.2.
+- Existing devs on Unity 6.0 LTS who installed alpha.2 will see an
+  incompatibility warning if they upgrade to alpha.3. Either upgrade
+  the editor to 6.3 LTS or pin to alpha.2 in `Packages/manifest.json`.
+
 ## [1.0.0-alpha.2] — 2026-06-09
 
 Establishes this package as the single source of truth for the target Unity
