@@ -2,6 +2,42 @@
 
 All notable changes to this package are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the package adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0-alpha.1] — 2026-06-09
+
+First Visual Scripting integration alpha. Lets community developers ship
+games built as node graphs without writing C#. Companion to GameKit M2
+on the platform side (preflight extension, backend allowlist update, host
+runtime integration).
+
+### Added
+
+- New assembly **`MyVillage.GameKit.VisualScripting`** under
+  `Runtime/VisualScripting/`. References Unity.VisualScripting.Core +
+  Unity.VisualScripting.Flow + MyVillage.GameKit. Locked-down asmdef
+  (overrideReferences, no unsafe code).
+- **5 host Custom Units** under `MyVillage/Mission` category in the VS
+  fuzzy finder:
+    - `Complete Mission` — calls IMissionHost.CompleteMission
+    - `Fail Mission` — calls IMissionHost.FailMission(reason)
+    - `Report Progress` — calls IMissionHost.ReportProgress
+    - `Request Pause` — calls IMissionHost.RequestPause / Resume
+    - `Log Event` — calls IMissionHost.LogEvent(name, props)
+- **3 config-reader Custom Units** under `MyVillage/Config`:
+    - `Read Config (String) / (Int) / (Float)` — reflective read of public
+      fields on the active MissionConfig. Safe alternative to a raw
+      GetMember node.
+- `HostResolver` helper — every unit reads IMissionHost from the
+  Object-scope graph variable `"missionHost"` (set by the host at bundle
+  load). Returns null when running outside the host (e.g. editor preview)
+  so graphs don't throw; logs a one-time warning.
+
+### Notes
+- No changes to existing `MyVillage.GameKit` runtime API. M1 code
+  compiles unchanged.
+- The 4 Visual Scripting reflection nodes (`InvokeMember`, `GetMember`,
+  `SetMember`, `Expose`) are blocked at preflight time — see the M2
+  design doc on the host repo for details.
+
 ## [1.0.0-alpha.4] — 2026-06-09
 
 First playable templates and UI widgets.
