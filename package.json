@@ -1,0 +1,25 @@
+{
+  "name": "com.myvillage.gamekit",
+  "version": "1.0.0-alpha.1",
+  "displayName": "MyVillage GameKit",
+  "description": "Unity SDK for building games on the M-UNI Universe platform.",
+  "unity": "6000.0",
+  "license": "SEE LICENSE IN LICENSE",
+  "author": {
+    "name": "MyVillage Project",
+    "url": "https://myvillageproject.ai"
+  },
+  "dependencies": {},
+  "samples": [
+    {
+      "displayName": "Hello Mission",
+      "description": "Minimal mission showing the MissionBase lifecycle.",
+      "path": "Samples~/HelloMission"
+    },
+    {
+      "displayName": "Quiz Sample",
+      "description": "Complete quiz mission using the built-in QuizMission template.",
+      "path": "Samples~/QuizSample"
+    }
+  ]
+}
