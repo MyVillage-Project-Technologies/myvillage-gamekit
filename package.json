@@ -1,9 +1,10 @@
 {
   "name": "com.myvillage.gamekit",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "displayName": "MyVillage GameKit",
   "description": "Unity SDK for building games on the M-UNI Universe platform.",
   "unity": "6000.0",
+  "unityRelease": "76f1",
   "license": "SEE LICENSE IN LICENSE",
   "author": {
     "name": "MyVillage Project",
