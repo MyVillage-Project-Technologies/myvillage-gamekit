@@ -2,6 +2,32 @@
 
 All notable changes to this package are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the package adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0-alpha.2] — 2026-06-09
+
+Part 1 of GameKit M3: in-editor preview. Lets devs play their mission
+end-to-end from Unity's Play button — no bundle build, no deploy, no
+waiting for review.
+
+### Added
+- `MockMissionHost` MonoBehaviour (`Runtime/MockHost/MockMissionHost.cs`).
+  Drop on any GameObject in your mission scene; on Play, it finds the
+  scene's `MissionBase`, implements `IMissionHost` against it, injects
+  itself as the Object-scope `missionHost` variable for Visual Scripting
+  Custom Units, calls `Initialize` then `Begin`, and shows a real
+  `ResultPanel` when the mission completes. Optional debug overlay
+  shows host event flow at the bottom of the screen.
+- AddComponentMenu entry: "MyVillage/Mock Mission Host".
+
+### Notes
+- Mock host has Inspector fields for `MissionConfig`, `gameSlug`,
+  `missionId`, `autoBegin`, and `showDebugOverlay`. Sensible defaults so
+  it works without any configuration if your mission doesn't read config.
+- Safe to leave attached in shipped bundles — the real host's
+  `MissionHostAdapter` overwrites the `missionHost` variable so the
+  mock never runs in production. Preflight allows it because the class
+  lives in `MyVillage.GameKit` (already allowlisted).
+- Part 2 of M3 (standalone GameKit Player app) ships in a separate repo.
+
 ## [1.1.0-alpha.1] — 2026-06-09
 
 First Visual Scripting integration alpha. Lets community developers ship
