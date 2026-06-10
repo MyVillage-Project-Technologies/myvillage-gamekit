@@ -2,6 +2,27 @@
 
 All notable changes to this package are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the package adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0-alpha.4] — 2026-06-10
+
+Multi-platform build support in the editor. Pairs with @myvillage/cli
+v1.60.0 (single `myvillage deploy` ships every built platform) and the
+ed-platform's per-platform artifact storage.
+
+### Added
+- **`MyVillage → Build All Platforms`** menu item. Builds AssetBundles
+  for iOS, Android, and WebGL in sequence, dropping each into
+  `builds/<platform>/`. Switches the active build target as needed and
+  restores it when done.
+- **Shortcut**: `Cmd/Ctrl+Shift+B` is bound to `Build Mission Bundle`
+  (current platform) for fast iteration.
+
+### Changed
+- `BundleBuilder` is now a real implementation, not a placeholder. The
+  previous version popped a "lands in M1" dialog; this version actually
+  invokes `BuildPipeline.BuildAssetBundles` with the GameKit convention
+  (every `.unity` file under `Assets/Scenes/` becomes a bundle named
+  after the filename, lowercased).
+
 ## [1.1.0-alpha.3] — 2026-06-09
 
 Scaffold UX fix. Closes the "press Play and nothing happens" gap that
